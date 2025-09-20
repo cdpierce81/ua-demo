@@ -1,0 +1,281 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    border: 0;
+    outline: 0;
+}
+
+body, button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    line-height: 1
+}
+
+body {
+    font-family: "Gill Sans", sans-serif;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.55);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    flex: 1;
+}
+
+.site-header {
+    background-image: url('../img/olive-branch-with-green-olives-watercolor.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 0;  
+    padding: 0;
+    width: 100%; /* Makes the header stretch to full width */
+    margin: 0;
+}
+
+.site-header::before {
+    display: none;
+}
+
+.site-branding {
+    padding: 2.5em 0; /* For thinner header from screenshot */
+    max-width: 100%; /* Allows it to expand with the header */
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: rgba(255,255,255,0.55); /* Soft white overlay for readability */
+    box-shadow: 0 3px 3px -3px #2A4D2E; /* Subtle shadow for depth */
+}
+
+.site-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0;
+    padding-bottom: 5px;
+    color: #2A4D2E; /* White text for contrast */
+    letter-spacing: 2px;
+}
+
+.site-description {
+    font-size: 11px;
+    font-weight: 400;
+    color: #556b2f; /* White text for contrast */
+    margin-bottom: 1em;
+}
+
+.site-description:before, .site-description:after {
+    content: " - ";
+    display: inline;
+    color: #2a4d2e; /* Darker green for the dashes */
+}   
+
+.jetpack-social-navigation .menu {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.jetpack-social-navigation a {
+    color: #2a4d2e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, transform 0.2s;
+}
+.jetpack-social-navigation a:hover {
+    color: #1b3320;
+    transform: scale(1.08);
+    text-shadow: 0 2px 8px rgba(42,77,46,0.10);
+}
+
+.site-content {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    padding: 0 10px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+    animation: fadeIn 1.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about, .services, .contact {
+    margin-bottom: 32px;
+    background: none; /* Removed the background */
+    border-radius: 0; /* Removed the border-radius */
+    padding: 0; /* Removed the padding */
+    box-shadow: none; /* Removed the box-shadow */
+}
+
+.services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.services li {
+    background: none; /* Removed the background */
+    padding: 0; /* Removed the padding */
+    border-radius: 0; /* Removed the border-radius */
+    color: #2a4d2e;
+    font-weight: 500;
+    box-shadow: none; /* Removed the box-shadow */
+}
+
+.contact {
+    position: relative;
+    min-height: 320px;
+    border-radius: 0; /* Removed the border-radius */
+    box-shadow: none; /* Removed the box-shadow */
+    border: none; /* Removed the border */
+    padding: 4vw 3vw;
+    margin: 0 auto;
+    text-align: left;
+    width: 90vw;
+    max-width: 900px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2vw;
+    transition: box-shadow 0.3s, width 0.3s, padding 0.3s;
+}
+
+.contact::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: none; /* Removed the background */
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.contact > * {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.contact strong {
+    font-size: 1.25rem;
+    color: #2a4d2e;
+    margin-bottom: 8px;
+}
+
+.contact a {
+    color: #2a4d2e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.contact a:hover {
+    color: #1b3320;
+    text-decoration: underline;
+}
+
+.card-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding: 18px 0;
+    background-color: #556b2f;
+    color: #FFFFFF;
+    font-size: 1rem;
+    margin-top: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1200px) {
+    .contact {
+        max-width: 700px;
+    }
+}
+@media (max-width: 700px) {
+    .contact {
+        width: 98vw;
+        max-width: 98vw;
+        min-width: 0;
+        padding: 24px 6px;
+        gap: 12px;
+    }
+
+    .contact-info {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
