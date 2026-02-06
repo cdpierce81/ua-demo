@@ -1,3 +1,4 @@
+/*--- RESET AND BASE STYLES ---*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
     margin: 0;
     padding: 0;
@@ -14,268 +15,227 @@ body, button, input, select, textarea {
 }
 
 body {
-    font-family: "Gill Sans", sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f7f9fa;
     color: #222;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Enable flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,0.55);
-    pointer-events: none;
-    z-index: -1;
-}
-
-.main-container {
+/*--- FULL PAGE CONTAINER/WRAPPER ---*/
+/* This is the main content are that gets the background box */
+.content-wrapper {
+    background: #ffffff; /* White background for content area */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Subtle shadow */
+    padding: 30px 40px; /* Padding inside the content area */
+    max-width: 800px;
+    margin: 0 auto; /* Center the content area */
     position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-    flex: 1;
+    z-index: 1; /* Ensure it sits above the header background */
 }
 
+/*--- HEADER AND NAVIGATION STYLES ---*/
 .site-header {
     background-image: url('../img/olive-branch-with-green-olives-watercolor.jpg');
     background-size: cover;
-    background-position: center center;
     background-repeat: no-repeat;
-    border-radius: 0;  
-    padding: 0;
-    width: 100%; /* Makes the header stretch to full width */
-    margin: 0;
+    background-position: center center;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* More pronounced shadow for header */
+    padding: 40px 20px; /* Increased padding for a more spacious header */
 }
 
 .site-header::before {
-    display: none;
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.1); /* Soft overlay for readability */
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 0 0 12px 12px;
 }
 
-.site-branding {
-    padding: 2.5em 0; /* For thinner header from screenshot */
-    max-width: 100%; /* Allows it to expand with the header */
-    width: 100%;
-    margin: 0 auto;
+.header-content {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    background-color: rgba(255,255,255,0.55); /* Soft white overlay for readability */
-    box-shadow: 0 3px 3px -3px #2A4D2E; /* Subtle shadow for depth */
+    max-width: 600px; /* Constrain header text width */
+    margin: 0 auto;
+    padding: 15px 20px; /* Adds padding inside the box */
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background for text */
+    border-radius: 8px; /* Rounded corners for the text box */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for the text box */ 
 }
 
 .site-title {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 1;
-    margin: 0;
-    padding-bottom: 5px;
-    color: #2A4D2E; /* White text for contrast */
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #2a4d2e;
     letter-spacing: 2px;
 }
 
 .site-description {
-    font-size: 11px;
-    font-weight: 400;
-    color: #556b2f; /* White text for contrast */
-    margin-bottom: 1em;
+    font-size: 1.2rem;
+    color: #4a6c4f;
+    margin-bottom: 1.5rem;
 }
 
-.site-description:before, .site-description:after {
-    content: " - ";
-    display: inline;
-    color: #2a4d2e; /* Darker green for the dashes */
-}   
-
-.jetpack-social-navigation .menu {
+.social-links { /* Targetting the new class on the ul */
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.jetpack-social-navigation a {
-    color: #2a4d2e;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s, transform 0.2s;
-}
-.jetpack-social-navigation a:hover {
-    color: #1b3320;
-    transform: scale(1.08);
-    text-shadow: 0 2px 8px rgba(42,77,46,0.10);
-}
-
-.site-content {
-    max-width: 900px;
-    margin: 40px auto 0 auto;
-    padding: 0 10px;
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
-    flex: 1;
-    animation: fadeIn 1.2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about, .services, .contact {
-    margin-bottom: 32px;
-    background: none; /* Removed the background */
-    border-radius: 0; /* Removed the border-radius */
-    padding: 0; /* Removed the padding */
-    box-shadow: none; /* Removed the box-shadow */
-}
-
-.services ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    list-style: none;
-    padding: 0;
-}
-
-.services li {
-    background: none; /* Removed the background */
-    padding: 0; /* Removed the padding */
-    border-radius: 0; /* Removed the border-radius */
-    color: #2a4d2e;
-    font-weight: 500;
-    box-shadow: none; /* Removed the box-shadow */
-}
-
-.contact {
-    position: relative;
-    min-height: 320px;
-    border-radius: 0; /* Removed the border-radius */
-    box-shadow: none; /* Removed the box-shadow */
-    border: none; /* Removed the border */
-    padding: 4vw 3vw;
-    margin: 0 auto;
-    text-align: left;
-    width: 90vw;
-    max-width: 900px;
-    min-width: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 2vw;
-    transition: box-shadow 0.3s, width 0.3s, padding 0.3s;
-}
-
-.contact::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: none; /* Removed the background */
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.contact > * {
-    position: relative;
-    z-index: 2;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
-    width: 100%;
-}
-
-.contact strong {
-    font-size: 1.25rem;
-    color: #2a4d2e;
-    margin-bottom: 8px;
-}
-
-.contact a {
+.social-links a {
     color: #2a4d2e;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
 }
 
-.contact a:hover {
-    color: #1b3320;
+/* Hide the SVG icons inside the links */
+.jetpack-social-navigation svg {
+    
+}
+
+/*--- MAIN CONTENT LAYOUT ---*/
+.site-content {
+    max-width: 100vw;
+    margin: 40px auto; /* Position the wrapper below the header */
+    padding: 0;
+    background: none; /* No background on the site-content itself */
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+    animation: fadeIn 1.2s ease;
+    display: flex;
+    justify-content: center;
+}
+
+/*--- SERVICES SECTION STYLING ---*/
+.services-section {
+    margin-bottom: 30px; /* Space below the services section */
+}
+
+/*--- SECTION STYLING (H2 & PADDING) ---*/
+.about-us-section, .services-section, .contact-us-section {
+    padding: 0; /* Padding for small screens */
+}
+
+.section-header {
+    font-size: 1.5rem;
+    color: #2a4d2e;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/*--- ABOUT US STYLING ---*/
+.about-us-section p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/*--- SERVICES GRID STYLING ---*/
+.services-grid {
+    display: grid; /* Create three columns on larger screens, or wrap on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.service-item {
+    background: #eaf3ea; /* Light green background */
+    color: #2a4d2e; /* Dark green text */
+    font-weight: 500;
+    border: none; /* No border */
+    text-align: center; /* Remove text decoration and underline effect */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* Style for items that appear as "links" or clickable elements, matching the image */ 
+.service-item:nth-child(-n+6) {/* Green border/underline */
+   border-bottom: 2px solid #8fbc8f; /* Light green underline border */
+}
+
+/* Simple hover effect for interactivity */
+.service-item:hover {
+    box-shadow: 0 2px 4px rgba(42,77,46,0.1); /* Subtle shadow on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+    transition: all 0.2s ease;
+}
+
+/*--- CONTACT US STYLING ---*/
+.contact-us-section p {
+    line-height: 1.4;
+    margin-bottom: 5px; /* Tighter spacing between contact details */
+}
+
+.contact-us-section a {
+    color: #2a4d2e;
+    text-decoration: none;
+}
+
+.contact-us-section a:hover {
     text-decoration: underline;
 }
 
-.card-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+.contact-detail {
+    margin-bottom: 2px;
 }
 
-.site-footer {
+/*--- FOOTER STYLING ---*/
+.site-footer { /* Footer styles */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    justify-content: center;
     text-align: center;
-    padding: 18px 0;
-    background-color: #556b2f;
-    color: #FFFFFF;
-    font-size: 1rem;
-    margin-top: 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
+    padding: 15px 0;
+    background: #eaf3ea; /* Light green background for footer */
+    color: #2a4d2e;
+    font-size: 0.9rem;
+    margin-top: 30px; /*Space between content and footer */
 }
 
+/*--- UITLITY & MEDIA QUERIES ---*/
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: none; }
-}
-
-@media (max-width: 1200px) {
-    .contact {
-        max-width: 700px;
+    from {
+        opacity: 0;
+        transform: translateY(24px);
     }
-}
-@media (max-width: 700px) {
-    .contact {
-        width: 98vw;
-        max-width: 98vw;
-        min-width: 0;
-        padding: 24px 6px;
-        gap: 12px;
-    }
-
-    .contact-info {
-        align-items: flex-start;
-        text-align: left;
+    to {
+        opacity: 1;
+        transform: none;
     }
 }
 
+@media (max-width: 600px) {
+    .site-title {
+        font-size: 2rem;
+    }
+
+    .site-description {
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack services on small screens */
+    }
+
+    .content-wrapper {
+        padding: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
